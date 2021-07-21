@@ -34,10 +34,17 @@ myForm.addEventListener('submit',onsubmit);
 
 function onsubmit(e){
 e.preventDefault();
-const name=nameInput.value;
-const email=emailInput.value;
-localStorage.setItem('name',name);
-localStorage.setItem('email',email);
+let myObj={
+    name:nameInput.value,
+   email:emailInput.value
+};
+let myObj_serialized=JSON.stringify(myObj);
+localStorage.setItem('myObj',myObj_serialized);
+let myObj_deserialized=JSON.parse(localStorage.getItem(myObj));
+console.log(myObj_deserialized);
+
+// localStorage.setItem('name',name);
+// localStorage.setItem('email',email);
 
 if(nameInput.value===''|| emailInput.value===''){
     msg.classList.add('error');
