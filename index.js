@@ -1,21 +1,8 @@
-// console.log(window);
-// console.log(document.getElementById('my-form'));
-// console.log(document.querySelector('h1'));
-
-// const ul=document.querySelector('.items');
-// ul.firstElementChild.textContent='HELLO';
-// ul.firstElementChild.style.background='green';
-// ul.children[1].style.background='yellow';
-const btn=document.querySelector('.btn');
-// btn.addEventListener('click',(e)=>{
-//     e.preventDefault();
-//     console.log('click');
-// });
 btn.addEventListener('mouseover',(e)=>{
     e.preventDefault();
    document.querySelector('#my-form').style.background='#ccc';
    document.querySelector('body').classList.add('bg-dark');
-   document.querySelector('.items').lastElementChild.innerHTML='<h1>Hello</h1>'; 
+//    document.querySelector('.items').lastElementChild.innerHTML='<h1>Hello</h1>'; 
 });
 btn.addEventListener('mouseout',(e)=>{
     e.preventDefault();
@@ -38,13 +25,8 @@ let myObj={
     name:nameInput.value,
    email:emailInput.value
 };
-let myObj_serialized=JSON.stringify(myObj);
-localStorage.setItem('myObj',myObj_serialized);
-let myObj_deserialized=JSON.parse(localStorage.getItem(myObj));
-console.log(myObj_deserialized);
-
-// localStorage.setItem('name',name);
-// localStorage.setItem('email',email);
+localStorage.setItem(myObj.email,JSON.stringify(myObj));
+let details=JSON.parse(localStorage.getItem(myObj.email));
 
 if(nameInput.value===''|| emailInput.value===''){
     msg.classList.add('error');
@@ -54,8 +36,8 @@ if(nameInput.value===''|| emailInput.value===''){
 }else{
    
    const li=document.createElement('li');
-   li.appendChild(document.createTextNode(`${nameInput.value} : ${emailInput.value}`));
-
+//    li.appendChild(document.createTextNode(`${nameInput.value} : ${emailInput.value}`));
+li.appendChild(document.createTextNode(myObj.name+ " " +myObj.email));
    userList.appendChild(li);
 
    nameInput.value='';
